@@ -521,7 +521,7 @@ We bring together performance marketing, creative storytelling, and analytics to
               <video
                 className="w-full h-full object-cover rounded-3xl bg-black"
                 src="/videos/hero-video.mp4"
-                autoPlay
+                controls
                 muted
                 loop
                 playsInline
