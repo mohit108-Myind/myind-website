@@ -467,56 +467,66 @@ We bring together performance marketing, creative storytelling, and analytics to
           </div>
 
           {/* Metrics block — spaced from CTAs, with divider + left shift */}
-          <div className="mt-6 lg:mt-14 xl:mt-16 max-w-3xl">
-            <div className="pt-6 md:pt-8 border-t border-slate-200/70">
-              <div className="grid grid-cols-3 gap-4 sm:gap-6 text-left sm:ml-4">
-                <div>
-                  <div className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#8DC63F]">
-                    <AnimatedNumber value={3} />
-                    <span>x+</span>
-                  </div>
-                  <p className="mt-1 text-sm md:text-base text-[#8DC63F] whitespace-nowrap">
-                    Avg. ROAS Uplift
-                  </p>
-                </div>
+         {/* Metrics */}
+<div className="mt-10 md:mt-12">
+  <div className="grid grid-cols-3 gap-4 md:gap-8">
+    {/* 1 */}
+    <div className="text-center">
+      <div className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#8DC63F] whitespace-nowrap">
+        <AnimatedNumber value={3} />
+        <span>x+</span>
+      </div>
+      <p className="mt-1 text-xs md:text-sm text-[#8DC63F]">
+        Avg. ROAS Uplift (90 Days)
+      </p>
+    </div>
 
-                <div>
-                  <div className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#8DC63F]">
-                    <AnimatedNumber value={23} />
-                    <span>%+</span>
-                  </div>
-                  <p className="mt-1 text-sm md:text-base text-[#8DC63F] whitespace-nowrap">
-                    Avg. CTR Uplift
-                  </p>
-                </div>
+    {/* 2 */}
+    <div className="text-center">
+      <div className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#8DC63F] whitespace-nowrap">
+        <AnimatedNumber value={23} />
+        <span>%+</span>
+      </div>
+      <p className="mt-1 text-xs md:text-sm text-[#8DC63F]">
+        Avg. CTR Uplift
+      </p>
+    </div>
 
-                <div>
-                  <div className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#8DC63F]">
-                    <span>$</span>
-                    <AnimatedNumber value={30} />
-                    <span>K+</span>
-                  </div>
-                  <p className="mt-1 text-sm md:text-base text-[#8DC63F] whitespace-nowrap">
-                    Monthly Ad Spends Managed
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+    {/* 3 */}
+    <div className="text-center">
+      <div className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#8DC63F] whitespace-nowrap">
+        <span>$</span>
+        <AnimatedNumber value={30} />
+        <span>K+</span>
+      </div>
+      <p className="mt-1 text-xs md:text-sm text-[#8DC63F]">
+        Monthly Ad Spends Managed
+      </p>
+    </div>
+  </div>
+</div>
+
         </div>
 
         {/* Right visual (video placeholder) */}
-        <motion.div
+         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="md:h-full md:ml-2 lg:ml-4 xl:ml-6"
+          className="md:h-full"
         >
           <Card className="rounded-3xl shadow-xl overflow-hidden border-none h-full">
             <CardContent className="p-0 h-full">
-             <HeroVideo />
-
+              <video
+                className="w-full h-full object-cover rounded-3xl bg-black"
+                src="/hero.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
             </CardContent>
           </Card>
         </motion.div>
