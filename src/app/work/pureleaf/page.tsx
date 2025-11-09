@@ -203,7 +203,7 @@ export default function PureLeafCaseStudy() {
     <video
       id="pureleafReel"
       src="/portfolio/pureleaf-ugc-reel.mp4"
-      poster="/portfolio/pureleaf-ugc-poster.jpg"
+    
       playsInline
       preload="metadata"
       controls
