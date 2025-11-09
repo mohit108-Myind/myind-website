@@ -522,7 +522,7 @@ We bring together performance marketing, creative storytelling, and analytics to
                 className="w-full h-full object-cover rounded-3xl bg-black"
                 src="/videos/hero-video.mp4"
                 controls
-                muted
+                
                 loop
                 playsInline
                 preload="metadata"
