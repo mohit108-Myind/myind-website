@@ -520,7 +520,7 @@ We bring together performance marketing, creative storytelling, and analytics to
             <CardContent className="p-0 h-full">
               <video
                 className="w-full h-full object-cover rounded-3xl bg-black"
-                src="/hero.mp4"
+                src="/hero-video.mp4"
                 autoPlay
                 muted
                 loop
