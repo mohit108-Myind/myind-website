@@ -438,13 +438,21 @@ const Hero = () => {
           </h1>
 
           <div className="leading-snug text-gray-500 text-base md:text-lg">
-  <Typewriter
-    text={`A full-stack social media marketing agency for ambitious D2C brands.
-We bring together performance marketing, creative storytelling, and analytics to deliver growth that looks good and performs even better.`}
-    highlights={["performance marketing", "creative storytelling", "analytics"]}
-    speed={22}
-    pauseBetween={1000}
-  />
+  <motion.p
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.5, ease: "easeOut" }}
+  className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
+>
+  A full-stack social media marketing agency for ambitious D2C brands.
+  <br />
+  <br />
+  We bring together <span className="font-semibold italic">performance marketing</span>,{" "}
+  <span className="font-semibold italic">creative storytelling</span>, and{" "}
+  <span className="font-semibold italic">analytics</span> to deliver growth that
+  looks good and performs even better.
+</motion.p>
+
 </div>
 
 
