@@ -444,13 +444,7 @@ const Hero = () => {
   transition={{ duration: 1.5, ease: "easeOut" }}
   className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
 >
-  A full-stack social media marketing agency for ambitious D2C brands.
-  <br />
-  <br />
-  We bring together <span className="font-semibold italic">performance marketing</span>,{" "}
-  <span className="font-semibold italic">creative storytelling</span>, and{" "}
-  <span className="font-semibold italic">analytics</span> to deliver growth that
-  looks good and performs even better.
+ We blend performance marketing, creative storytelling, and analytics to grow ambitious D2C brands
 </motion.p>
 
 </div>
