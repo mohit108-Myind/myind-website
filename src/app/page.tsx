@@ -522,7 +522,7 @@ const Hero = () => {
             <CardContent className="p-0 h-full">
               <video
                 className="w-full h-full object-cover rounded-3xl bg-black"
-                src="/videos/hero-video.mp4"
+                src="/videos/hero-video-2.mp4"
                 controls
                 
                 loop
