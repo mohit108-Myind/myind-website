@@ -121,3 +121,56 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---------- PRINT STYLES FOR CASE STUDIES ---------- */
+@media print {
+  /* Page size & margins */
+  @page {
+    size: A4;
+    margin: 16mm 12mm;
+  }
+
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Only show the case-study content */
+  #case-study,
+  #case-study * {
+    visibility: visible;
+  }
+
+  /* Place it at the top-left for printing */
+  #case-study {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* Hide site chrome during print */
+  nav,
+  footer,
+  .print-hidden,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Prevent awkward splits across pages */
+  .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #101828 !important;
+  }
+
+  p,
+  li {
+    color: #111 !important;
+  }
+}

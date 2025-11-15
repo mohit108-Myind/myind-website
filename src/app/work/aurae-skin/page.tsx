@@ -1,4 +1,6 @@
 // src/app/work/aurae-skin/page.tsx
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -17,8 +19,12 @@ const heroStats = [
 ];
 
 export default function AuraeSkinCaseStudy() {
+  // ✅ This triggers the browser print dialog → user can Save as PDF
+  const handlePrint = () => window.print();
+
   return (
-    <main className="bg-white">
+    // ✅ Wrap full case study so print CSS can target just this
+    <main id="case-study" className="bg-white">
       {/* HERO */}
       <section className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -42,26 +48,33 @@ export default function AuraeSkinCaseStudy() {
                   Clean Beauty · EU Markets (FR · DE · NL)
                 </p>
               </div>
-              <div className="flex gap-3">
-                <a
-                 
+
+              {/* ✅ Actions – hidden in PDF via print:hidden */}
+              <div className="flex gap-3 print:hidden">
+                <Button
+                  onClick={handlePrint}
                   className="inline-flex items-center rounded-lg bg-[#101828] text-white px-4 py-2 text-sm font-medium hover:opacity-90"
-                  download
                 >
                   Download PDF Case Study
-                </a>
+                </Button>
+
                 <Button asChild className="rounded-2xl">
-  <a href="/#contact">Book a Discovery Call</a>
-</Button>
+                  <a href="/#contact">Book a Discovery Call</a>
+                </Button>
               </div>
             </div>
 
             {/* Quick stats */}
             <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
               {heroStats.map((s) => (
-                <div key={s.label} className="rounded-xl bg-[#F9FAFB] p-4 ring-1 ring-zinc-100">
+                <div
+                  key={s.label}
+                  className="rounded-xl bg-[#F9FAFB] p-4 ring-1 ring-zinc-100 avoid-break"
+                >
                   <div className="text-sm text-zinc-500">{s.label}</div>
-                  <div className="text-2xl font-semibold text-[#101828]">{s.value}</div>
+                  <div className="text-2xl font-semibold text-[#101828]">
+                    {s.value}
+                  </div>
                 </div>
               ))}
             </div>
@@ -72,9 +85,11 @@ export default function AuraeSkinCaseStudy() {
       {/* BODY */}
       <section className="mx-auto max-w-6xl px-4 md:px-6 py-12 space-y-12">
         {/* Challenge */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 avoid-break">
           <div className="md:col-span-2">
-            <h2 className="text-2xl font-semibold text-[#101828]">The Challenge</h2>
+            <h2 className="text-2xl font-semibold text-[#101828]">
+              The Challenge
+            </h2>
             <p className="mt-3 text-zinc-700 leading-relaxed">
               Strong early adoption yet unprofitable scaling across Europe. ROAS
               ~1.8×, cart abandonment 72%, limited funnel segmentation, and
@@ -83,7 +98,9 @@ export default function AuraeSkinCaseStudy() {
             </p>
           </div>
           <aside className="rounded-xl border border-zinc-200 p-4 bg-[#F9FAFB]">
-            <h3 className="text-sm font-semibold text-zinc-700">Project Scope</h3>
+            <h3 className="text-sm font-semibold text-zinc-700">
+              Project Scope
+            </h3>
             <ul className="mt-2 text-sm text-zinc-600 space-y-1">
               <li>• 90-day EU growth program</li>
               <li>• Meta + Google + TikTok</li>
@@ -94,108 +111,134 @@ export default function AuraeSkinCaseStudy() {
         </div>
 
         {/* Strategy */}
-        <div>
-          <h2 className="text-2xl font-semibold text-[#101828]">Strategy & Funnel</h2>
+        <div className="avoid-break">
+          <h2 className="text-2xl font-semibold text-[#101828]">
+            Strategy & Funnel
+          </h2>
           <div className="mt-5 grid gap-6 md:grid-cols-4">
             <div className="rounded-xl p-5 ring-1 ring-zinc-200">
-              <div className="text-xs font-medium text-emerald-700 bg-emerald-50 inline-block px-2 py-1 rounded">TOFU</div>
+              <div className="text-xs font-medium text-emerald-700 bg-emerald-50 inline-block px-2 py-1 rounded">
+                TOFU
+              </div>
               <h3 className="mt-3 font-semibold">Awareness</h3>
               <p className="mt-2 text-sm text-zinc-700">
-                UGC Reels + TikTok showing “clean, Parisian routine”. Influencer seeding with micro-creators.
+                UGC Reels + TikTok showing “clean, Parisian routine”. Influencer
+                seeding with micro-creators.
               </p>
-              <div className="mt-3 text-xs text-zinc-500">KPIs: Reach, CPM, CTR</div>
+              <div className="mt-3 text-xs text-zinc-500">
+                KPIs: Reach, CPM, CTR
+              </div>
             </div>
             <div className="rounded-xl p-5 ring-1 ring-zinc-200">
-              <div className="text-xs font-medium text-cyan-700 bg-cyan-50 inline-block px-2 py-1 rounded">MOFU</div>
+              <div className="text-xs font-medium text-cyan-700 bg-cyan-50 inline-block px-2 py-1 rounded">
+                MOFU
+              </div>
               <h3 className="mt-3 font-semibold">Consideration</h3>
               <p className="mt-2 text-sm text-zinc-700">
-                Carousel “5 dermatologist-approved reasons” + localized copy (FR/DE/NL).
+                Carousel “5 dermatologist-approved reasons” + localized copy
+                (FR/DE/NL).
               </p>
-              <div className="mt-3 text-xs text-zinc-500">KPIs: Eng%, ATC%, Leads</div>
+              <div className="mt-3 text-xs text-zinc-500">
+                KPIs: Eng%, ATC%, Leads
+              </div>
             </div>
             <div className="rounded-xl p-5 ring-1 ring-zinc-200">
-              <div className="text-xs font-medium text-fuchsia-700 bg-fuchsia-50 inline-block px-2 py-1 rounded">BOFU</div>
+              <div className="text-xs font-medium text-fuchsia-700 bg-fuchsia-50 inline-block px-2 py-1 rounded">
+                BOFU
+              </div>
               <h3 className="mt-3 font-semibold">Conversion</h3>
               <p className="mt-2 text-sm text-zinc-700">
-                Dynamic Product Ads + Google Search for high-intent terms; pop-up 10% first-order incentive.
+                Dynamic Product Ads + Google Search for high-intent terms;
+                pop-up 10% first-order incentive.
               </p>
-              <div className="mt-3 text-xs text-zinc-500">KPIs: ROAS, CVR, CAC</div>
+              <div className="mt-3 text-xs text-zinc-500">
+                KPIs: ROAS, CVR, CAC
+              </div>
             </div>
             <div className="rounded-xl p-5 ring-1 ring-zinc-200">
-              <div className="text-xs font-medium text-amber-700 bg-amber-50 inline-block px-2 py-1 rounded">RETENTION</div>
+              <div className="text-xs font-medium text-amber-700 bg-amber-50 inline-block px-2 py-1 rounded">
+                RETENTION
+              </div>
               <h3 className="mt-3 font-semibold">Loyalty</h3>
               <p className="mt-2 text-sm text-zinc-700">
-                “AURAĒ Insider” program; 3-email drip (Ingredients → Stories → Offer); NPS in post-purchase.
+                “AURAĒ Insider” program; 3-email drip (Ingredients → Stories →
+                Offer); NPS in post-purchase.
               </p>
-              <div className="mt-3 text-xs text-zinc-500">KPIs: LTV, Repeat Orders</div>
+              <div className="mt-3 text-xs text-zinc-500">
+                KPIs: LTV, Repeat Orders
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Creatives placeholders */}
         {/* Ad Creative Samples */}
-<div>
-  <h2 className="text-2xl font-semibold text-[#101828]">Ad Creative Samples</h2>
-  <p className="mt-2 text-zinc-600 text-sm">
-    Creative concepts used in the campaign.
-  </p>
+        <div className="avoid-break">
+          <h2 className="text-2xl font-semibold text-[#101828]">
+            Ad Creative Samples
+          </h2>
+          <p className="mt-2 text-zinc-600 text-sm">
+            Creative concepts used in the campaign.
+          </p>
 
-  <div className="mt-5 grid gap-4 md:grid-cols-3">
-    
-    {/* 🎥 AURAĒ UGC Reel – 16:9 cinematic format */}
-    <div className="aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-zinc-200 bg-black relative group">
-      <video
-        id="auraeReel"
-        src="/portfolio/aurae-ugc-reel.mp4"
-        poster="/portfolio/aurae-ugc-poster.jpg"
-        controls
-        playsInline
-        preload="metadata"
-        className="w-full h-full object-cover rounded-xl"
-      />
-      {/* Caption overlay */}
-      <div className="absolute left-4 bottom-3 z-10 text-white">
-        <div className="text-xs opacity-80">@auraeskin</div>
-        <div className="text-sm font-medium">UGC Reel — “Glow Quietly”</div>
-      </div>
-      {/* Gradient fade for better readability */}
-      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-    </div>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {/* 🎥 AURAĒ UGC Reel – 16:9 cinematic format */}
+            <div className="aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-zinc-200 bg-black relative group">
+              <video
+                id="auraeReel"
+                src="/portfolio/aurae-ugc-reel.mp4"
+                poster="/portfolio/aurae-ugc-poster.jpg"
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover rounded-xl"
+              />
+              {/* Caption overlay */}
+              <div className="absolute left-4 bottom-3 z-10 text-white">
+                <div className="text-xs opacity-80">@auraeskin</div>
+                <div className="text-sm font-medium">UGC Reel — “Glow Quietly”</div>
+              </div>
+              {/* Gradient fade for better readability */}
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+            </div>
 
-    {/* 📊 Carousel Creative Placeholder */}
-    <div className="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-zinc-200 bg-[#F4F4F4]">
-      <img
-        src="/portfolio/aurae-2nd-card.jpg"
-        alt="AURAĒ Skin — Instant Hydration You Can Feel. Get 2 samples free on first buy!"
-        className="w-full h-full object-cover"
-      />
-      <div className="pointer-events-none absolute left-4 bottom-3 z-10 text-white drop-shadow">
-        <div className="text-xs opacity-80">@auraeskin</div>
-        <div className="text-sm font-medium">Instant Hydration Offer Creative</div>
-      </div>
-    </div>
+            {/* 📊 Carousel Creative Placeholder */}
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-zinc-200 bg-[#F4F4F4]">
+              <img
+                src="/portfolio/aurae-2nd-card.jpg"
+                alt="AURAĒ Skin — Instant Hydration You Can Feel. Get 2 samples free on first buy!"
+                className="w-full h-full object-cover"
+              />
+              <div className="pointer-events-none absolute left-4 bottom-3 z-10 text-white drop-shadow">
+                <div className="text-xs opacity-80">@auraeskin</div>
+                <div className="text-sm font-medium">
+                  Instant Hydration Offer Creative
+                </div>
+              </div>
+            </div>
 
-    {/* 🛒 DPA Retargeting Placeholder */}
-    <div className="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-zinc-200 bg-[#F4F4F4]">
-      <img
-        src="/portfolio/aurae-3rd-card.jpg"
-        alt="AURAĒ Skin — Still thinking about glowing skin? Shop Now."
-        className="w-full h-full object-cover"
-      />
-      <div className="pointer-events-none absolute left-4 bottom-3 z-10 text-white drop-shadow">
-        <div className="text-xs opacity-80">@auraeskin</div>
-        <div className="text-sm font-medium">Retargeting — “Still thinking about glowing skin?”</div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-
+            {/* 🛒 DPA Retargeting Placeholder */}
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-zinc-200 bg-[#F4F4F4]">
+              <img
+                src="/portfolio/aurae-3rd-card.jpg"
+                alt="AURAĒ Skin — Still thinking about glowing skin? Shop Now."
+                className="w-full h-full object-cover"
+              />
+              <div className="pointer-events-none absolute left-4 bottom-3 z-10 text-white drop-shadow">
+                <div className="text-xs opacity-80">@auraeskin</div>
+                <div className="text-sm font-medium">
+                  Retargeting — “Still thinking about glowing skin?”
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Results */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 avoid-break">
           <div>
-            <h2 className="text-2xl font-semibold text-[#101828]">Results (90 days)</h2>
+            <h2 className="text-2xl font-semibold text-[#101828]">
+              Results (90 days)
+            </h2>
             <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-zinc-200">
               <table className="w-full text-left text-sm">
                 <thead className="bg-[#F9FAFB] text-zinc-600">
@@ -210,25 +253,33 @@ export default function AuraeSkinCaseStudy() {
                   <tr>
                     <td className="px-4 py-3">ROAS</td>
                     <td className="px-4 py-3">2.1×</td>
-                    <td className="px-4 py-3 font-medium text-[#101828]">4.8×</td>
+                    <td className="px-4 py-3 font-medium text-[#101828]">
+                      4.8×
+                    </td>
                     <td className="px-4 py-3">+129%</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3">CAC</td>
                     <td className="px-4 py-3">Baseline</td>
-                    <td className="px-4 py-3 font-medium text-[#101828]">↓42%</td>
+                    <td className="px-4 py-3 font-medium text-[#101828]">
+                      ↓42%
+                    </td>
                     <td className="px-4 py-3">Efficiency</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3">Leads</td>
                     <td className="px-4 py-3">—</td>
-                    <td className="px-4 py-3 font-medium text-[#101828]">10k+</td>
+                    <td className="px-4 py-3 font-medium text-[#101828]">
+                      10k+
+                    </td>
                     <td className="px-4 py-3">Email growth</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3">Email Revenue</td>
                     <td className="px-4 py-3">—</td>
-                    <td className="px-4 py-3 font-medium text-[#101828]">18%</td>
+                    <td className="px-4 py-3 font-medium text-[#101828]">
+                      18%
+                    </td>
                     <td className="px-4 py-3">Retention</td>
                   </tr>
                 </tbody>
@@ -238,7 +289,9 @@ export default function AuraeSkinCaseStudy() {
 
           {/* Mini bars */}
           <div>
-            <h2 className="text-2xl font-semibold text-[#101828]">Performance Snapshot</h2>
+            <h2 className="text-2xl font-semibold text-[#101828]">
+              Performance Snapshot
+            </h2>
             <div className="mt-4 space-y-3">
               {[
                 { label: "CTR (UGC vs Static)", pct: 180 },
@@ -251,7 +304,10 @@ export default function AuraeSkinCaseStudy() {
                     <span>{m.pct}%</span>
                   </div>
                   <div className="h-2 rounded bg-zinc-100">
-                    <div className="h-2 rounded bg-[#F37021]" style={{ width: `${Math.min(m.pct, 100)}%` }} />
+                    <div
+                      className="h-2 rounded bg-[#F37021]"
+                      style={{ width: `${Math.min(m.pct, 100)}%` }}
+                    />
                   </div>
                 </div>
               ))}
@@ -263,27 +319,40 @@ export default function AuraeSkinCaseStudy() {
         </div>
 
         {/* Insights */}
-        <div>
-          <h2 className="text-2xl font-semibold text-[#101828]">Key Insights</h2>
+        <div className="avoid-break">
+          <h2 className="text-2xl font-semibold text-[#101828]">
+            Key Insights
+          </h2>
           <ul className="mt-4 space-y-2 text-zinc-700">
-            <li>• Before/After carousels delivered 2.8× higher CTR than product-only visuals.</li>
-            <li>• UGC + localization produced the lowest CPC and strongest engagement.</li>
+            <li>
+              • Before/After carousels delivered 2.8× higher CTR than
+              product-only visuals.
+            </li>
+            <li>
+              • UGC + localization produced the lowest CPC and strongest
+              engagement.
+            </li>
             <li>• Email automations contributed 18% of revenue in the period.</li>
-            <li>• TikTok scaled TOFU reach but converted best via Meta + Search retargeting.</li>
+            <li>
+              • TikTok scaled TOFU reach but converted best via Meta + Search
+              retargeting.
+            </li>
           </ul>
         </div>
 
         {/* CTA */}
-        <div className="rounded-2xl bg-[#F9FAFB] p-6 ring-1 ring-zinc-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="rounded-2xl bg-[#F9FAFB] p-6 ring-1 ring-zinc-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4 avoid-break">
           <div>
             <h3 className="text-xl font-semibold text-[#101828]">
               Want a clean-beauty growth plan tailored to your market?
             </h3>
-            <p className="text-zinc-600 mt-1">Book a 30-minute session with MYIND.</p>
+            <p className="text-zinc-600 mt-1">
+              Book a 30-minute session with MYIND.
+            </p>
           </div>
           <Button asChild variant="outline" className="rounded-2xl">
-  <Link href="/#contact">Talk to MYIND</Link>
-</Button>
+            <Link href="/#contact">Talk to MYIND</Link>
+          </Button>
         </div>
       </section>
     </main>
