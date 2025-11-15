@@ -5,6 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+const printPdf = () => {
+  if (typeof window !== "undefined") {
+    window.print();
+  }
+};
+
 export const metadata = {
   title: "PureLeaf Nutrition — Case Study | MYIND Media",
   description:
@@ -51,13 +57,12 @@ export default function PureLeafCaseStudy() {
 
               {/* ✅ Buttons hidden in the PDF (print:hidden) */}
               <div className="flex gap-3 print:hidden">
-                <Button
-                  onClick={handlePrint}
-                  className="inline-flex items-center rounded-lg bg-[#101828] text-white px-4 py-2 text-sm font-medium hover:opacity-90"
-                >
-                  Download PDF Case Study
-                </Button>
-
+                <button
+  onClick={printPdf}
+  className="inline-flex items-center rounded-lg bg-[#101828] text-white px-4 py-2 text-sm font-medium hover:opacity-90"
+>
+  Download PDF Case Study
+</button>
                 <Button asChild className="rounded-2xl">
                   <a href="/#contact">Book a Discovery Call</a>
                 </Button>
