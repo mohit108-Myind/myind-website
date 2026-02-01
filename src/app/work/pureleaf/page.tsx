@@ -12,11 +12,7 @@ const printPdf = () => {
   }
 };
 
-export const metadata = {
-  title: "PureLeaf Nutrition — Case Study | MYIND Media",
-  description:
-    "Plant-based supplements brand: full-funnel strategy (Meta + Google + Email), creative testing, and measurable growth by MYIND Media.",
-};
+
 
 const heroStats = [
   { label: "ROAS", value: "3.9×" },

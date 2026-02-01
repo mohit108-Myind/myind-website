@@ -12,11 +12,7 @@ const printPdf = () => {
   }
 };
 
-export const metadata = {
-  title: "AURAĒ SKIN — Case Study | MYIND Media",
-  description:
-    "European clean beauty brand: full-funnel strategy with UGC, localization, and retention by MYIND Media.",
-};
+
 
 const heroStats = [
   { label: "ROAS (M3)", value: "4.8×" },

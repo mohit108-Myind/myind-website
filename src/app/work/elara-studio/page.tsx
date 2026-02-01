@@ -11,11 +11,7 @@ const printPdf = () => {
   }
 };
 
-export const metadata = {
-  title: "ELARA Studio — Case Study | MYIND Media",
-  description:
-    "Minimalist apparel brand case study: full-funnel strategy, creative testing, and measurable growth driven by MYIND Media.",
-};
+
 
 const stats = [
   { label: "ROAS", value: "4.8×" },
